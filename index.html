@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>協同組合AKAGI | 技能実習・特定技能のトータルサポート</title>
+    
+    <!-- Google Fonts: Noto Sans JP for clean, readable Japanese typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#1e3a8a', // Deep blue (Trust)
+                            dark: '#0f172a', // Slate 900
+                            green: '#059669', // Emerald 600 (Growth/Nature)
+                            light: '#f8fafc', // Slate 50
+                            accent: '#38bdf8', // Light blue accent
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 10px 25px -5px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Utilities for smooth visual effects */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+        .hero-pattern {
+            background-color: #1e3a8a;
+            background-image: radial-gradient(circle at center, #1e40af 0%, #1e3a8a 100%);
+        }
+        /* Mobile menu transition */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 500px; /* arbitrary max-height for transition */
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-brand-light antialiased break-words">
+
+    <header id="header" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center gap-2">
+                        <div class="w-10 h-10 rounded-lg bg-brand-blue flex items-center justify-center text-white font-bold text-xl shadow-md">
+                            A
+                        </div>
+                        <span class="font-bold text-2xl tracking-tight text-brand-blue">協同組合AKAGI</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-600 hover:text-brand-blue font-medium transition-colors">ホーム</a>
+                    <a href="#news" class="text-gray-600 hover:text-brand-blue font-medium transition-colors">情報公開・お知らせ</a>
+                    <a href="#services" class="text-gray-600 hover:text-brand-blue font-medium transition-colors">事業内容</a>
+                    <a href="#strengths" class="text-gray-600 hover:text-brand-blue font-medium transition-colors">強み</a>
+                    <a href="#about" class="text-gray-600 hover:text-brand-blue font-medium transition-colors">組合概要</a>
+                    <a href="#contact" class="text-gray-600 hover:text-brand-blue font-medium transition-colors">お問い合わせ</a>
+                    
+                    <!-- Login Button -->
+                    <a href="#" class="inline-flex items-center gap-2 bg-brand-green text-white px-5 py-2.5 rounded-full font-medium hover:bg-emerald-700 transition-colors shadow-md hover:shadow-lg">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        組合員ログイン
+                    </a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-blue focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="lg:hidden bg-white border-t border-gray-100 shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#home" class="mobile-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">ホーム</a>
+                <a href="#news" class="mobile-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">情報公開・お知らせ</a>
+                <a href="#services" class="mobile-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">事業内容</a>
+                <a href="#strengths" class="mobile-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">強み</a>
+                <a href="#about" class="mobile-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">組合概要</a>
+                <a href="#contact" class="mobile-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">お問い合わせ</a>
+                <a href="#" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-medium bg-brand-green text-white hover:bg-emerald-700 shadow-sm">
+                    <i class="fa-solid fa-right-to-bracket mr-2"></i>組合員ログイン
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 hero-pattern overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-blue-600 opacity-20 blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-brand-green opacity-20 blur-3xl pointer-events-none"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left text-white z-10">
+                    <span class="inline-block py-1 px-3 rounded-full bg-blue-800/50 border border-blue-400/30 text-sm font-semibold tracking-wider mb-6 text-blue-100">
+                        監理団体・登録支援機関
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        群馬の企業と、<br />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">世界の人材を繋ぐ。</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-blue-100 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        技能実習（育成就労）・特定技能のトータルサポート。<br />
+                        地域産業の発展と、人材の成長を共に実現する信頼と安心のパートナーです。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full">
+                        <a href="#contact" class="w-full sm:w-auto text-center px-6 py-3 sm:px-8 sm:py-4 bg-brand-green text-white rounded-full font-bold text-base sm:text-lg hover:bg-emerald-500 hover:shadow-[0_0_20px_rgba(5,150,105,0.4)] transition-all duration-300">
+                            無料相談・お問い合わせ
+                        </a>
+                        <a href="#services" class="w-full sm:w-auto text-center px-6 py-3 sm:px-8 sm:py-4 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-full font-bold text-base sm:text-lg hover:bg-white/20 transition-all duration-300">
+                            事業内容を見る
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image Placeholder -->
+                <div class="relative z-10 hidden lg:block">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <img src="https://placehold.co/800x600/0f172a/ffffff?text=Global+Human+Resources" alt="外国人材の活躍イメージ" class="w-full h-auto object-cover opacity-90">
+                        <!-- Overlay elements -->
+                        <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-green flex items-center justify-center text-white text-xl">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">優良認定基準対応</p>
+                                <p class="text-gray-900 font-bold">安心のコンプライアンス管理</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">情報公開・お知らせ</h2>
+                <div class="w-16 h-1 bg-brand-green mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    協同組合AKAGIは、適正な監理業務の遂行と透明性の確保に努めています。<br class="hidden sm:block"/>
+                    優良認定の取得・維持に向けた情報公開資料はこちらからご確認いただけます。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Info Disclosure List (Left & Center) -->
+                <div class="lg:col-span-2 bg-brand-light rounded-2xl p-6 md:p-8 shadow-soft border border-gray-100">
+                    <h3 class="text-xl font-bold text-brand-blue mb-6 flex items-center border-b border-gray-200 pb-3">
+                        <i class="fa-solid fa-folder-open mr-3"></i> 法定情報公開
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group">
+                            <div class="flex items-start gap-4 mb-3 sm:mb-0">
+                                <span class="bg-blue-100 text-brand-blue text-xs font-bold px-2.5 py-1 rounded mt-0.5">公開資料</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 group-hover:text-brand-blue transition-colors">業務運営規程</h4>
+                                    <p class="text-sm text-gray-500 mt-1">監理事業の運営に関する規程を公開しています。</p>
+                                </div>
+                            </div>
+                            <a href="#" class="text-brand-blue text-sm font-medium hover:underline flex items-center gap-1 self-start sm:self-auto px-4 py-2 bg-gray-50 rounded-lg whitespace-nowrap">
+                                <i class="fa-regular fa-file-pdf"></i> PDFを閲覧
+                            </a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group">
+                            <div class="flex items-start gap-4 mb-3 sm:mb-0">
+                                <span class="bg-blue-100 text-brand-blue text-xs font-bold px-2.5 py-1 rounded mt-0.5">公開資料</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 group-hover:text-brand-blue transition-colors">監理費表</h4>
+                                    <p class="text-sm text-gray-500 mt-1">監理業務に伴う費用の基準について定めています。</p>
+                                </div>
+                            </div>
+                            <a href="#" class="text-brand-blue text-sm font-medium hover:underline flex items-center gap-1 self-start sm:self-auto px-4 py-2 bg-gray-50 rounded-lg whitespace-nowrap">
+                                <i class="fa-regular fa-file-pdf"></i> PDFを閲覧
+                            </a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group">
+                            <div class="flex items-start gap-4 mb-3 sm:mb-0">
+                                <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded mt-0.5">年次報告</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 group-hover:text-brand-blue transition-colors">事業報告書・決算書概要</h4>
+                                    <p class="text-sm text-gray-500 mt-1">前年度の事業実績と財務状況を開示しています。</p>
+                                </div>
+                            </div>
+                            <a href="#" class="text-brand-blue text-sm font-medium hover:underline flex items-center gap-1 self-start sm:self-auto px-4 py-2 bg-gray-50 rounded-lg whitespace-nowrap">
+                                <i class="fa-regular fa-file-pdf"></i> PDFを閲覧
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- General News List (Right) -->
+                <div class="bg-white rounded-2xl p-6 shadow-soft border border-gray-100 flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center border-b border-gray-200 pb-3">
+                        <i class="fa-regular fa-bell mr-3 text-brand-green"></i> 最新のお知らせ
+                    </h3>
+                    <div class="flex-grow">
+                        <ul class="space-y-5">
+                            <li class="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                                <span class="text-xs text-gray-400 font-medium">2026.08.10</span>
+                                <a href="#" class="block mt-1 font-medium text-gray-800 hover:text-brand-blue line-clamp-2 leading-snug">夏季休業期間におけるサポート窓口の対応について</a>
+                            </li>
+                            <li class="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                                <span class="text-xs text-gray-400 font-medium">2026.07.15</span>
+                                <a href="#" class="block mt-1 font-medium text-gray-800 hover:text-brand-blue line-clamp-2 leading-snug">育成就労制度への移行に向けた当組合の対応方針に関する説明会を開催しました。</a>
+                            </li>
+                            <li class="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                                <span class="text-xs text-gray-400 font-medium">2026.06.01</span>
+                                <a href="#" class="block mt-1 font-medium text-gray-800 hover:text-brand-blue line-clamp-2 leading-snug">【重要】情報公開資料を令和7年度版に更新いたしました。</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#" class="mt-6 text-center text-sm text-brand-blue font-bold hover:underline">お知らせ一覧を見る <i class="fa-solid fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-green font-bold tracking-widest text-sm uppercase">Our Services</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-2 mb-4">事業内容</h2>
+                <div class="w-16 h-1 bg-brand-blue mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-card group hover:-translate-y-1 transition-transform duration-300">
+                    <div class="h-48 bg-gradient-to-r from-blue-900 to-blue-700 relative flex items-center justify-center overflow-hidden px-4">
+                        <i class="fa-solid fa-users-gear text-6xl text-white/20 absolute"></i>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white relative z-10 text-center">技能実習・育成就労<br><span class="text-base sm:text-lg font-normal">受入サポート事業</span></h3>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            海外の優秀な人材を日本企業へ受け入れ、技能や技術の移転を図る制度です。当組合が監理団体として、受け入れ企業様と人材の間に立ち、適正な実習（就労）が行われるよう全面的な指導・監査・サポートを行います。
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start text-sm text-gray-700">
+                                <i class="fa-solid fa-check text-brand-green mt-1 mr-3"></i> <span>現地面接から入国手配までの手続き代行</span>
+                            </li>
+                            <li class="flex items-start text-sm text-gray-700">
+                                <i class="fa-solid fa-check text-brand-green mt-1 mr-3"></i> <span>入国後講習の実施（日本語・生活ルール等）</span>
+                            </li>
+                            <li class="flex items-start text-sm text-gray-700">
+                                <i class="fa-solid fa-check text-brand-green mt-1 mr-3"></i> <span>定期的な企業訪問・監査、母国語での面談</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-card group hover:-translate-y-1 transition-transform duration-300">
+                    <div class="h-48 bg-gradient-to-r from-emerald-800 to-emerald-600 relative flex items-center justify-center overflow-hidden px-4">
+                        <i class="fa-solid fa-id-card-clip text-6xl text-white/20 absolute"></i>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white relative z-10 text-center">特定技能<br><span class="text-base sm:text-lg font-normal">登録支援機関業務</span></h3>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            一定の専門性・技能を有する外国人材を受け入れる「特定技能」制度において、法務省認定の登録支援機関として活動しています。企業様に代わり、法令で定められた外国人材への各種支援計画の策定と実施を行います。
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start text-sm text-gray-700">
+                                <i class="fa-solid fa-check text-brand-blue mt-1 mr-3"></i> <span>事前ガイダンス・生活オリエンテーションの実施</span>
+                            </li>
+                            <li class="flex items-start text-sm text-gray-700">
+                                <i class="fa-solid fa-check text-brand-blue mt-1 mr-3"></i> <span>住居確保・公的手続きの同行サポート</span>
+                            </li>
+                            <li class="flex items-start text-sm text-gray-700">
+                                <i class="fa-solid fa-check text-brand-blue mt-1 mr-3"></i> <span>多言語での生活相談・苦情対応窓口の設置</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="strengths" class="py-24 bg-brand-blue text-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">AKAGIが選ばれる4つの理由</h2>
+                <div class="w-16 h-1 bg-brand-green mx-auto rounded-full"></div>
+                <p class="text-blue-100 mt-6 max-w-2xl mx-auto">企業様が抱える人材不足の課題に対し、長年の実績とノウハウで確実なソリューションを提供します。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <!-- Point 1 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-colors">
+                    <div class="w-14 h-14 bg-brand-green rounded-xl flex items-center justify-center text-2xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-users-viewfinder"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">中国国籍人材の<br>確かなノウハウ</h3>
+                    <p class="text-blue-100 text-sm leading-relaxed">
+                        当組合は中国国籍人材の受け入れに特化した深い専門知識と長年の実績を持ちます。現地の送出機関との強力なネットワークにより、質の高い人材マッチングを実現します。
+                    </p>
+                </div>
+
+                <!-- Point 2 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-colors">
+                    <div class="w-14 h-14 bg-brand-green rounded-xl flex items-center justify-center text-2xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">多様なニーズに応える<br>多国籍対応</h3>
+                    <p class="text-blue-100 text-sm leading-relaxed">
+                        中国に加え、ベトナム、タイ、インドネシアといった東南アジア各国からの人材受け入れも幅広く展開。企業様の職種や社風に最も適した国籍の人材をご提案します。
+                    </p>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-colors">
+                    <div class="w-14 h-14 bg-brand-green rounded-xl flex items-center justify-center text-2xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-hands-holding-child"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">安心の専任体制<br>充実のサポート</h3>
+                    <p class="text-blue-100 text-sm leading-relaxed">
+                        各国の通訳スタッフや経験豊富な生活指導員が常駐。入国後の生活トラブル防止から、職場でのコミュニケーション支援まで、企業と人材の双方をきめ細やかにフォローします。
+                    </p>
+                </div>
+
+                <!-- Point 4 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-colors">
+                    <div class="w-14 h-14 bg-brand-green rounded-xl flex items-center justify-center text-2xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">コンプライアンス遵守と<br>迅速な手続き</h3>
+                    <p class="text-blue-100 text-sm leading-relaxed">
+                        複雑な在留資格申請や行政への報告等、煩雑な手続きをスピーディかつ正確に処理。法令遵守を第一に、優良認定水準の適正な監理・支援体制を構築しています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-center text-lg font-bold text-gray-500 mb-10">対応可能国籍</h3>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16">
+                <!-- China -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 rounded-full bg-gray-50 flex items-center justify-center mb-3 shadow-sm border border-gray-100 group-hover:shadow-md transition-shadow overflow-hidden">
+                        <svg viewBox="0 0 900 600" class="w-12 h-8 rounded-sm shadow-sm"><path fill="#ee1c25" d="M0 0h900v600H0z"/><path d="M150 75l17.6 54.3H225l-46.2 33.6 17.6 54.3-46.4-33.7-46.4 33.7 17.6-54.3-46.2-33.6h57.4z" fill="#ffef00"/><g fill="#ffef00"><path d="M300 30l8.8 27.2h28.6l-23.1 16.8 8.8 27.1-23.1-16.8-23.1 16.8 8.8-27.1-23.1-16.8h28.6z"/><path d="M360 90l8.8 27.2h28.6l-23.1 16.8 8.8 27.1-23.1-16.8-23.1 16.8 8.8-27.1-23.1-16.8h28.6z"/><path d="M360 180l8.8 27.2h28.6l-23.1 16.8 8.8 27.1-23.1-16.8-23.1 16.8 8.8-27.1-23.1-16.8h28.6z"/><path d="M300 240l8.8 27.2h28.6l-23.1 16.8 8.8 27.1-23.1-16.8-23.1 16.8 8.8-27.1-23.1-16.8h28.6z"/></g></svg>
+                    </div>
+                    <span class="font-bold text-gray-800">中国</span>
+                </div>
+                <!-- Vietnam -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 rounded-full bg-gray-50 flex items-center justify-center mb-3 shadow-sm border border-gray-100 group-hover:shadow-md transition-shadow overflow-hidden">
+                        <svg viewBox="0 0 900 600" class="w-12 h-8 rounded-sm shadow-sm"><path fill="#da251d" d="M0 0h900v600H0z"/><path fill="#ff0" d="M450 120l58.8 180.9H700l-154.6 112.3 59 180.9L450 481.8 295.6 594.1l59-180.9L200 300.9h191.2z"/></svg>
+                    </div>
+                    <span class="font-bold text-gray-800">ベトナム</span>
+                </div>
+                <!-- Thailand -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 rounded-full bg-gray-50 flex items-center justify-center mb-3 shadow-sm border border-gray-100 group-hover:shadow-md transition-shadow overflow-hidden">
+                        <svg viewBox="0 0 900 600" class="w-12 h-8 rounded-sm shadow-sm"><path fill="#f4f5f8" d="M0 0h900v600H0z"/><path fill="#2d2a4a" d="M0 200h900v200H0z"/><path fill="#a51931" d="M0 0h900v100H0zM0 500h900v100H0z"/></svg>
+                    </div>
+                    <span class="font-bold text-gray-800">タイ</span>
+                </div>
+                <!-- Indonesia -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 rounded-full bg-gray-50 flex items-center justify-center mb-3 shadow-sm border border-gray-100 group-hover:shadow-md transition-shadow overflow-hidden">
+                        <svg viewBox="0 0 900 600" class="w-12 h-8 border border-gray-200 rounded-sm shadow-sm"><path fill="#fff" d="M0 0h900v600H0z"/><path fill="#e70011" d="M0 0h900v300H0z"/></svg>
+                    </div>
+                    <span class="font-bold text-gray-800">インドネシア</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-brand-light">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">組合概要</h2>
+                <div class="w-16 h-1 bg-brand-blue mx-auto rounded-full"></div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-soft overflow-hidden border border-gray-100">
+                <table class="w-full text-left border-collapse break-words">
+                    <tbody>
+                        <tr class="border-b border-gray-100">
+                            <th class="py-4 px-4 sm:py-5 sm:px-6 bg-gray-50 w-1/3 sm:w-1/4 font-bold text-gray-700 text-sm sm:text-base">名称</th>
+                            <td class="py-4 px-4 sm:py-5 sm:px-6 font-medium text-gray-900 text-sm sm:text-base">協同組合AKAGI</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <th class="py-4 px-4 sm:py-5 sm:px-6 bg-gray-50 font-bold text-gray-700 text-sm sm:text-base">代表者</th>
+                            <td class="py-4 px-4 sm:py-5 sm:px-6 text-gray-800 text-sm sm:text-base">代表理事　渡辺 勝明</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <th class="py-4 px-4 sm:py-5 sm:px-6 bg-gray-50 font-bold text-gray-700 text-sm sm:text-base">所在地</th>
+                            <td class="py-4 px-4 sm:py-5 sm:px-6 text-gray-800 text-sm sm:text-base">
+                                〒372-0006<br>
+                                群馬県伊勢崎市太田町936-1 ロルベール201号室
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <th class="py-4 px-4 sm:py-5 sm:px-6 bg-gray-50 font-bold text-gray-700 text-sm sm:text-base">電話番号</th>
+                            <td class="py-4 px-4 sm:py-5 sm:px-6 text-gray-800 text-sm sm:text-base">0270-61-9040</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <th class="py-4 px-4 sm:py-5 sm:px-6 bg-gray-50 font-bold text-gray-700 text-sm sm:text-base">事業内容</th>
+                            <td class="py-4 px-4 sm:py-5 sm:px-6 text-gray-800 text-sm sm:text-base">
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>外国人技能実習生受入事業（監理団体業務）</li>
+                                    <li>特定技能外国人支援事業（登録支援機関業務）</li>
+                                    <li>組合員に対する共同購買事業 等</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <th class="py-4 px-4 sm:py-5 sm:px-6 bg-gray-50 font-bold text-gray-700 text-sm sm:text-base">登録支援機関<br class="hidden sm:block">登録番号</th>
+                            <td class="py-4 px-4 sm:py-5 sm:px-6 text-gray-800 text-sm sm:text-base">21登-006173</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <th class="py-4 px-4 sm:py-5 sm:px-6 bg-gray-50 font-bold text-gray-700 text-sm sm:text-base">外国人技能実習機構<br class="hidden sm:block">許可番号</th>
+                            <td class="py-4 px-4 sm:py-5 sm:px-6 text-gray-800 text-sm sm:text-base">許1704001864</td>
+                        </tr>
+                        <tr>
+                            <th class="py-4 px-4 sm:py-5 sm:px-6 bg-gray-50 font-bold text-gray-700 text-sm sm:text-base">対応言語</th>
+                            <td class="py-4 px-4 sm:py-5 sm:px-6 text-gray-800 text-sm sm:text-base">中国語、ベトナム語、タイ語、インドネシア語（委託含む）</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Map Placeholder -->
+            <div class="mt-8 rounded-2xl overflow-hidden shadow-soft h-64 bg-gray-200 relative">
+                <!-- In a real scenario, an iframe of Google Maps goes here -->
+                <div class="absolute inset-0 flex items-center justify-center flex-col text-gray-500">
+                    <i class="fa-solid fa-map-location-dot text-4xl mb-2"></i>
+                    <p>Google Maps表示エリア</p>
+                    <p class="text-sm">群馬県伊勢崎市太田町936-1</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div>
+                    <span class="text-brand-green font-bold tracking-widest text-sm uppercase">Contact Us</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-2 mb-6">お問い合わせ</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        技能実習生・特定技能人材の受け入れに関するご相談、組合加入についてのご質問など、お気軽にお問い合わせください。担当者より速やかにご連絡いたします。
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-full flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-gray-500 font-medium">お電話でのご相談</p>
+                                <p class="text-2xl font-bold text-brand-dark mt-1">0270-61-9040</p>
+                                <p class="text-sm text-gray-400 mt-1">受付時間: 平日 9:00 - 18:00（土日祝休）</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-full flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-gray-500 font-medium">所在地</p>
+                                <p class="text-base text-gray-800 mt-1">〒372-0006<br>群馬県伊勢崎市太田町936-1<br>ロルベール201号室</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form (Mockup) -->
+                <div class="bg-white p-8 rounded-2xl shadow-card border border-gray-100">
+                    <form onsubmit="event.preventDefault(); showMessage();" class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">会社名 <span class="text-red-500 text-xs ml-1">*</span></label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-colors" placeholder="例：株式会社〇〇">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">ご担当者名 <span class="text-red-500 text-xs ml-1">*</span></label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-colors" placeholder="例：山田 太郎">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">メールアドレス <span class="text-red-500 text-xs ml-1">*</span></label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-colors" placeholder="例：info@example.com">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">お問い合わせ種別</label>
+                            <div class="relative">
+                                <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-colors appearance-none bg-white">
+                                    <option>人材受け入れ（技能実習・特定技能）について</option>
+                                    <option>組合加入について</option>
+                                    <option>その他・ご相談</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">お問い合わせ内容 <span class="text-red-500 text-xs ml-1">*</span></label>
+                            <textarea required rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-colors resize-none" placeholder="ご質問やご要望をご記入ください。"></textarea>
+                        </div>
+                        
+                        <div class="pt-2">
+                            <button type="submit" class="w-full bg-brand-blue text-white font-bold py-4 rounded-lg hover:bg-blue-800 transition-colors shadow-md flex justify-center items-center gap-2">
+                                <i class="fa-regular fa-paper-plane"></i> 送信する
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Custom Message Box for Form Submission -->
+                    <div id="form-message" class="hidden mt-4 p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm text-center">
+                        <i class="fa-solid fa-circle-check mr-1"></i> お問い合わせを受け付けました。担当者からのご連絡をお待ちください。（※これはデモ用のメッセージです）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-dark text-gray-300 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand Info -->
+                <div class="md:col-span-2">
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded bg-white flex items-center justify-center text-brand-dark font-bold text-lg">
+                            A
+                        </div>
+                        <span class="font-bold text-xl text-white tracking-tight">協同組合AKAGI</span>
+                    </a>
+                    <p class="text-sm text-gray-400 mb-4 max-w-sm">
+                        群馬県伊勢崎市を拠点に、企業と海外人材を繋ぐ懸け橋として、地域社会と国際社会の発展に貢献します。
+                    </p>
+                    <div class="flex space-x-4">
+                        <p class="text-sm"><i class="fa-solid fa-location-dot mr-2"></i> 群馬県伊勢崎市太田町936-1</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">メニュー</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-white transition-colors">ホーム</a></li>
+                        <li><a href="#news" class="hover:text-white transition-colors">情報公開・お知らせ</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">事業内容</a></li>
+                        <li><a href="#strengths" class="hover:text-white transition-colors">当組合の強み</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">組合概要</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">サポート・規定</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">プライバシーポリシー</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">特定商取引法に基づく表記</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">サイトマップ</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500">&copy; 2026 協同組合AKAGI. All rights reserved.</p>
+                <div class="text-sm text-gray-500 mt-4 md:mt-0 space-y-1 text-right">
+                    <p>外国人技能実習機構 許可番号: 許1704001864</p>
+                    <p>登録支援機関登録番号: 21登-006173</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header background change on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('glass-header');
+                header.classList.remove('bg-white');
+            } else {
+                header.classList.remove('glass-header');
+                header.classList.add('bg-white');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.add('open');
+                mobileMenuBtn.innerHTML = '<i class="fa-solid fa-xmark text-2xl"></i>';
+            } else {
+                mobileMenu.classList.remove('open');
+                mobileMenuBtn.innerHTML = '<i class="fa-solid fa-bars text-2xl"></i>';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+
+        // Close mobile menu on link click
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) toggleMenu();
+            });
+        });
+
+        // Form submission mockup
+        function showMessage() {
+            const msgBox = document.getElementById('form-message');
+            msgBox.classList.remove('hidden');
+            setTimeout(() => {
+                msgBox.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
