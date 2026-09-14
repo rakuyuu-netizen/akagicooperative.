@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>組合員ログイン | 協同組合AKAGI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Noto Sans JP"', 'sans-serif'] },
+          colors: {
+            brand: {
+              blue: '#1e3a8a',
+              dark: '#0f172a',
+              green: '#059669',
+              light: '#f8fafc'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-sans bg-brand-light text-gray-800 antialiased min-h-screen flex flex-col">
+  <header class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="akagi_with_member_login.html" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-lg bg-brand-blue flex items-center justify-center text-white font-bold text-xl shadow-md">A</div>
+        <span class="font-bold text-xl sm:text-2xl tracking-tight text-brand-blue">協同組合AKAGI</span>
+      </a>
+      <a href="akagi_with_member_login.html" class="text-sm font-medium text-gray-600 hover:text-brand-blue transition-colors">
+        <i class="fa-solid fa-arrow-left mr-1"></i>ホームへ戻る
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-1 flex items-center justify-center px-4 py-12">
+    <div class="w-full max-w-md">
+      <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+        <div class="bg-brand-blue px-6 py-8 text-center text-white">
+          <div class="w-16 h-16 mx-auto rounded-full bg-white/10 flex items-center justify-center text-3xl mb-4">
+            <i class="fa-solid fa-user-lock"></i>
+          </div>
+          <h1 class="text-2xl font-bold">組合員ログイン</h1>
+          <p class="text-blue-100 text-sm mt-2">組合員専用ページ</p>
+        </div>
+
+        <div class="p-6 sm:p-8">
+          <form id="login-form" class="space-y-5" autocomplete="off">
+            <div>
+              <label for="member-id" class="block text-sm font-bold text-gray-700 mb-2">ID</label>
+              <div class="relative">
+                <i class="fa-regular fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input id="member-id" name="member-id" type="text" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-gray-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none" placeholder="IDを入力">
+              </div>
+            </div>
+
+            <div>
+              <label for="member-pass" class="block text-sm font-bold text-gray-700 mb-2">PASS</label>
+              <div class="relative">
+                <i class="fa-solid fa-key absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input id="member-pass" name="member-pass" type="password" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-gray-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none" placeholder="PASSを入力">
+              </div>
+            </div>
+
+            <button type="submit" class="w-full bg-brand-green text-white font-bold py-3.5 rounded-xl hover:bg-emerald-700 transition-colors shadow-md flex items-center justify-center gap-2">
+              <i class="fa-solid fa-right-to-bracket"></i>ログイン
+            </button>
+          </form>
+
+          <div id="login-message" class="hidden mt-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-center font-bold" role="alert" aria-live="polite">
+            <i class="fa-solid fa-circle-info mr-2"></i>管理している組合に問い合わせください
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-xs text-gray-400 mt-6">&copy; 2026 協同組合AKAGI. All rights reserved.</p>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      document.getElementById('login-message').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
